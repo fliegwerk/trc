@@ -8,11 +8,13 @@ module.exports = {
 		{
 			package: './package.json',
 			tsconfig: './tsconfig.json',
-			mainFile: 'lib/index.ts'
+			mainFile: 'index.ts'
 		}
 	],
-	title: 'Documentation', // appears in the page title and header
-	externalLinks: {}, // e.g.: { "GitHub": "https://github.com/fliegwerk/fliegdoc" }
+	title: 'fliegwerk trc programmatic API', // appears in the page title and header
+	externalLinks: {
+		GitHub: 'https://github.copm/fliegwerk/webpack-typescript-react-compiler'
+	}, // e.g.: { "GitHub": "https://github.com/fliegwerk/fliegdoc" }
 	hidePrivateMembers: true,
 	theme: HTMLTheme
 };

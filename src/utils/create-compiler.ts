@@ -1,5 +1,5 @@
 import webpack, { Configuration } from 'webpack';
-import { getLogger } from '../logger';
+import { getLogger } from './logger';
 
 const logger = getLogger('webpack-compiler');
 
@@ -19,11 +19,11 @@ export function createCompiler(webpackConfig: Configuration) {
 
 		// nice user output, so no usage of cli tool
 		if (statsRes.errors.length > 0) {
-			logger.error('Can not compile.');
-			statsRes.errors.forEach(error => logger.debug(error.message));
+			logger.error('Cannot compile.');
+			statsRes.errors.forEach(error => logger.info(error.message));
 		} else if (statsRes.warnings.length > 0) {
 			logger.warn('Compiled with warnings.');
-			statsRes.warnings.forEach(warning => logger.debug(warning.message));
+			statsRes.warnings.forEach(warning => logger.info(warning.message));
 		} else {
 			logger.success('Successfully compiled.');
 		}

@@ -1,5 +1,8 @@
-import {Configuration} from "webpack-dev-server";
+import { Configuration } from 'webpack-dev-server';
 
+/**
+ * Returns the webpack development server configuration.
+ */
 export function getDevServerConfig(): Configuration {
 	return {
 		// logging
@@ -9,7 +12,7 @@ export function getDevServerConfig(): Configuration {
 		overlay: true,
 		// server configuration
 		bonjour: true,
-		open: true,
+		open: !!process.env.BROWSER,
 		hot: true,
 		publicPath: '/',
 		port: 3000,

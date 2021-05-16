@@ -18,5 +18,5 @@
 		"declarationMap": true,
 		"checkJs": true
 	},
-	"include": ["src"]
+	"include": ["src", "typings.d.ts"]
 }

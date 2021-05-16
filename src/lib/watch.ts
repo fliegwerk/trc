@@ -2,9 +2,7 @@ import { Configuration } from 'webpack';
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 import Server from 'webpack-dev-server';
 
-import { getLogger } from '../logger';
-import { getDevServerConfig } from './get-dev-server-config';
-import { createCompiler } from './create-compiler';
+import { getLogger, createCompiler } from '../utils';
 
 const logger = getLogger('watch');
 
@@ -13,7 +11,7 @@ export function watch(
 	devServerConfig: DevServerConfiguration
 ) {
 	const compiler = createCompiler(webpackConfig);
-	const server = new Server(compiler, getDevServerConfig());
+	const server = new Server(compiler, devServerConfig);
 	server.listen(devServerConfig.port, error => {
 		if (error) {
 			logger.error(

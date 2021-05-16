@@ -4,12 +4,9 @@
 import yargs from 'yargs';
 import ch from 'chalk';
 
-import { getLogger } from './logger';
-import { getPaths } from './utils';
-
+import { getLogger, getPaths } from './utils';
 import { build, watch } from './lib';
-import { getWebpackConfig } from './lib/get-webpack-config';
-import { getDevServerConfig } from './lib/get-dev-server-config';
+import { getWebpackConfig, getDevServerConfig } from './config';
 
 const logger = getLogger('trc-cli');
 
@@ -28,33 +25,39 @@ const args = yargs
 		type: 'boolean',
 		description: 'Automatically rebuild on source change'
 	})
-	.option('verbose', {
-		alias: 'v',
-		type: 'boolean',
+	.option('debug', {
+		type: 'string',
 		description: 'Run with verbose logging'
 	})
 	.showHelpOnFail(false, 'Specify --help for available options')
 	.help()
 	.parse();
 
-// Execute stuff based on args
+process.env.DEBUG = args['debug'];
 
 try {
 	const paths = getPaths();
-	logger.debug('Paths:', JSON.stringify(paths, null, 2));
+	logger.debug('Project directory:', paths.projectDir);
+	logger.debug('Entry file:', paths.srcEntryFile);
+	logger.debug('Output directory:', paths.outDir);
 
-	const config = getWebpackConfig(paths);
+	const isDev = !!args['watch'];
+
+	logger.info('Building for:', isDev ? 'development' : 'production');
+
+	const config = getWebpackConfig(paths, isDev);
 	const devServerConfig = getDevServerConfig();
 
+	// Execute stuff based on args
 	if (args['watch']) {
 		// watch stuff
 		logger.info(`Big brother's watching you (I mean: this folder :P)`);
 		watch(config, devServerConfig);
 	} else {
 		logger.info(
-			`Let's just build stuff (use ${ch.blueBright(`--watch`)} or ${ch.blueBright(
-				`-w`
-			)} to do something else)`
+			`Let's just build stuff (use ${ch.blueBright(
+				`--watch`
+			)} or ${ch.blueBright(`-w`)} to do something else)`
 		);
 		build(config);
 	}
