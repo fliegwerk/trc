@@ -1,0 +1,8 @@
+node_modules
+coverage
+dist
+docs
+.vscode
+.idea
+package-lock.json
+CHANGELOG.md

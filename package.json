@@ -1,29 +1,75 @@
 {
-  "name": "webpack-typescript-react-compiler",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.1.2"
-  },
-  "scripts": {
-    "start": "echo \"No start script specified\"",
-    "build": "echo \"No start script specified\""
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "webpack-typescript-react-compiler",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"build": "tsc --build tsconfig.json",
+		"lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern node_modules/ --no-error-on-unmatched-pattern \".\"",
+		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
+		"style:ci": "prettier --list-different package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
+		"docs": "npm run docs:types",
+		"docs:ci": "npm run docs:types:ci",
+		"docs:types": "fliegdoc build --serve --port 4040",
+		"docs:types:ci": "fliegdoc build"
+	},
+	"files": [
+		"dist"
+	],
+	"main": "dist/lib/index.js",
+	"types": "types/index.d.ts",
+	"bin": {
+		"trc": "dist/bin.js"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"dependencies": {
+		"@fliegwerk/logsemts": "^0.4.2",
+		"copy-webpack-plugin": "^8.1.1",
+		"css-loader": "^5.2.4",
+		"html-webpack-plugin": "^5.3.1",
+		"sass-loader": "^11.1.1",
+		"style-loader": "^2.0.0",
+		"ts-loader": "^9.1.2",
+		"webpack": "^5.37.0",
+		"yargs": "^17.0.1"
+	},
+	"devDependencies": {
+		"@types/node": "^12.0.0",
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"@types/yargs": "^16.0.1",
+		"@typescript-eslint/eslint-plugin": "^4.23.0",
+		"@typescript-eslint/parser": "^4.23.0",
+		"eslint": "^7.26.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.23.2",
+		"eslint-plugin-jsdoc": "^34.6.1",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-tsdoc": "^0.2.14",
+		"fliegdoc": "^0.5.0",
+		"prettier": "^2.3.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"sass": "^1.32.13",
+		"typescript": "^4.2.4"
+	},
+	"peerDependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"sass": "^1.32.13",
+		"typescript": "^4.2.4"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

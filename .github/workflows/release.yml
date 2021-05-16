@@ -1,0 +1,67 @@
+name: Release
+
+# Events that trigger this workflow
+on: workflow_dispatch
+
+jobs:
+  release:
+    name: Release and publish a new project version
+    runs-on: ubuntu-latest
+    steps:
+      # The credentials from the GitHub runner are not useful here,
+      # because we need to push to a restricted branch,
+      # so maintainer access is required.
+      # We also need to fetch the entire commit history because lerna builds a change log out of commit messages.
+      # More information:
+      # https://www.conventionalcommits.org/en/v1.0.0/
+      # https://github.com/lerna/lerna/tree/main/commands/version
+      - name: Checkout 📥
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14
+
+      # Remove, when setup-node action supports specifying the node version
+      - name: Install npm v7 ⬆
+        run: npm install --global npm@v7
+
+      - name: Install development dependencies 📚
+        run: npm ci
+
+      - name: Conventional Changelog Action 🎉
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.7.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-user-name: ${{ github.actor }}
+          git-user-email: '${{ github.actor }}@users.noreply.github.com'
+          release-count: '0'
+          version-file: './project.json'
+          skip-on-empty: 'false'
+
+      - name: Create Release 🪡
+        id: create_release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+
+        # Build a .npmrc configuration file
+        # that will be used from npm and lerna
+        # to publish to the npm registry with the given token.
+      - name: Setup npm 📀
+        run: |
+          touch "${GITHUB_WORKSPACE}/.npmrc"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "${GITHUB_WORKSPACE}/.npmrc"
+          cat "${GITHUB_WORKSPACE}/.npmrc"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm registry 🗜
+        run: npm publish
