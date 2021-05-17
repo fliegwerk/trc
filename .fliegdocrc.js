@@ -1,7 +1,7 @@
 const { HTMLTheme } = require('fliegdoc');
 
 module.exports = {
-	baseUrl: '/',
+	baseUrl: '/trc/',
 	outDir: './docs',
 	readme: './README.md',
 	modules: [
