@@ -23,16 +23,11 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
+          registry-url: 'https://registry.npmjs.org'
 
       # Remove, when setup-node action supports specifying the node version
       - name: Install npm v7 ⬆
         run: npm install --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci
-
-      - name: Build all packages 🛠️
-        run: npm run build
 
       - name: Conventional Changelog Action 🎉
         id: changelog
@@ -56,15 +51,13 @@ jobs:
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
-        # Build a .npmrc configuration file
-        # that will be used from npm and lerna
-        # to publish to the npm registry with the given token.
-      - name: Setup npm 📀
-        run: |
-          touch "${GITHUB_WORKSPACE}/.npmrc"
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "${GITHUB_WORKSPACE}/.npmrc"
-          cat "${GITHUB_WORKSPACE}/.npmrc"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Install development dependencies 📚
+        run: npm ci
+
+      - name: Build all packages 🛠️
+        run: npm run build
+
       - name: Publish to npm registry 🗜
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
