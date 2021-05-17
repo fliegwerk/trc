@@ -44,8 +44,63 @@
                             </nav>
         </aside>
         <div class="col-sm-12 col-md-8 col-lg-6">
-<h1>webpack-typescript-react-compiler</h1>
-<p>Compile your TypeScript React Code with webpack.</p>
+<h1>Welcome to ``@fliegwerk/trc` 👋</h1>
+<p><img src="https://img.shields.io/badge/node-%3E%3D12-blue.svg" alt="Prerequisite">
+<a href="https://fliegwerk.github.io/trc"><img src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" alt="Documentation"></a>
+<a href="https://github.com/fliegwerk/trc/graphs/commit-activity"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance"></a>
+<a href="https://github.com/fliegwerk/trc/blob/main/LICENSE"><img src="https://img.shields.io/github/license/fliegwerk/@fliegwerk/trc" alt="License: MIT"></a>
+<a href="https://twitter.com/fliegwerk"><img src="https://img.shields.io/twitter/follow/fliegwerk.svg?style=social" alt="Twitter: fliegwerk"></a></p>
+<blockquote>
+<p>A simple, bare-bones compiler for Typescript React projects, providing a configurable API</p>
+</blockquote>
+<h3>🏠 <a href="https://fliegwerk.github.io/trc">Homepage</a></h3>
+<h2>Prerequisites</h2>
+<ul>
+<li>node &gt;=12</li>
+</ul>
+<h2>Install</h2>
+<pre><code class="language-sh">npm install @fliegwerk/trc
+</code></pre>
+<h2>Usage</h2>
+<h3>CLI</h3>
+<h4>Show help</h4>
+<pre><code class="language-sh">$ trc --help
+Options:
+      --version  Show version number                                   [boolean]
+  -w, --watch    Automatically rebuild on source change                [boolean]
+      --debug    Run with verbose logging                               [string]
+      --help     Show help                                             [boolean]
+</code></pre>
+<h4>Build project</h4>
+<pre><code class="language-sh">trc
+</code></pre>
+<h4>Serve project in development server</h4>
+<pre><code class="language-sh">trc --watch
+</code></pre>
+<h3>API</h3>
+<pre><code class="language-ts">import { build } from '@fliegwerk/trc';
+
+build(webpackConfig);
+</code></pre>
+<p>(cf. <a href="https://fliegwerk.github.io/trc">docs</a> for a list of exported members)</p>
+<h2>Author</h2>
+<p>👤 <strong>fliegwerk</strong></p>
+<ul>
+<li>Website: <a href="https://www.fliegwerk.com">https://www.fliegwerk.com</a></li>
+<li>Twitter: <a href="https://twitter.com/fliegwerk">@fliegwerk</a></li>
+<li>Github: <a href="https://github.com/fliegwerk">@fliegwerk</a></li>
+</ul>
+<h2>🤝 Contributing</h2>
+<p>Contributions, issues and feature requests are welcome!</p>
+<p>Feel free to check <a href="https://github.com/fliegwerk/trc/issues">issues page</a>.
+You can also take a look at the <a href="https://github.com/fliegwerk/trc/blob/main/CONTRIBUTING.md">contributing guide</a>.</p>
+<h2>Show your support</h2>
+<p>Give a ⭐️ if this project helped you!</p>
+<h2>📝 License</h2>
+<p>Copyright © 2021 <a href="https://github.com/fliegwerk">fliegwerk</a>.</p>
+<p>This project is <a href="https://github.com/fliegwerk/trc/blob/main/LICENSE">MIT</a> licensed.</p>
+<hr>
+<p><em>This README was generated with ❤️ by <a href="https://github.com/kefranabg/readme-md-generator">readme-md-generator</a></em></p>
 </div>
 </div>
 </div>
