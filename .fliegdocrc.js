@@ -13,7 +13,7 @@ module.exports = {
 	],
 	title: '@fliegwerk/trc', // appears in the page title and header
 	externalLinks: {
-		GitHub: 'https://github.copm/fliegwerk/trc',
+		GitHub: 'https://github.com/fliegwerk/trc',
 		npm: 'https://www.npmjs.com/package/@fliegwerk/trc'
 	}, // e.g.: { "GitHub": "https://github.com/fliegwerk/fliegdoc" }
 	hidePrivateMembers: true,
