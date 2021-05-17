@@ -26,7 +26,7 @@
 </head>
 <body>
 <header>
-    <a href="/" class="logo">fliegwerk trc programmatic API</a>
+    <a href="/trc/" class="logo">fliegwerk trc programmatic API</a>
             <a class="button" href="https://github.copm/fliegwerk/webpack-typescript-react-compiler" target="_blank">GitHub</a>
         <div class="spacer"></div>
     <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
@@ -35,9 +35,9 @@
     <div class="row">
         <aside class="col-sm-12 col-md-4 col-lg-3">
             <nav class="fixed">
-                <a href="/">Project README</a>
+                <a href="/trc/">Project README</a>
                 <span>Modules</span>
-                                    <a href="/@fliegwerk/trc">
+                                    <a href="/trc/@fliegwerk/trc">
                         <code>
                             @fliegwerk/trc                        </code>
                     </a>
@@ -626,7 +626,7 @@ build(config).then(() =&gt; console.log('Successfully built'));
         return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
     }
 
-    fetch('/search-index.json').then(r => r.json()).then(index => {
+    fetch('/trc/search-index.json').then(r => r.json()).then(index => {
         searchIndex.add(index)
         const searchPopup = document.createElement('search-popup');
         searchPopup.setAttribute('search', 'search')
