@@ -37,23 +37,23 @@
             <nav class="fixed">
                 <a href="/">Project README</a>
                 <span>Modules</span>
-                                    <a href="/webpack-typescript-react-compiler">
+                                    <a href="/@fliegwerk/trc">
                         <code>
-                            webpack-typescript-react-compiler                        </code>
+                            @fliegwerk/trc                        </code>
                     </a>
                             </nav>
         </aside>
         <div class="col-sm-12 col-md-8 col-lg-6">
-<h1><code>webpack-typescript-react-compiler</code></h1>
+<h1><code>@fliegwerk/trc</code></h1>
 
 <p>
     Install using
 </p>
-<pre><code>npm install webpack-typescript-react-compiler</code></pre>
+<pre><code>npm install @fliegwerk/trc</code></pre>
 
 <h2>Exported Members</h2>
 <p>You can access these members by importing the module:</p>
-<pre><code>import { <i>member</i> } from 'webpack-typescript-react-compiler';</code></pre>
+<pre><code>import { <i>member</i> } from '@fliegwerk/trc';</code></pre>
 
 <!-- Members -->
     <div class="card fluid">
@@ -97,8 +97,37 @@
 </p>
 
 <!-- Docs -->
-    <!-- no docs :( -->
-    <p><small>No docs provided</small></p>
+    <!-- Description -->
+    <p>Builds project source files with webpack via a given configuration file.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>webpackConfig - the configuration file for the webpack compiler</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">import { getWebpackConfig, getPaths, build } from '@fliegwerk/trc';
+
+const paths = getPaths();
+const config = getWebpackConfig(paths);
+build(config).then(() =&gt; console.log('Successfully built'));
+</code></pre>
+</div>
+            </div>
                         </div>
     <div class="card fluid">
         <!-- Name with anchor link -->
@@ -150,45 +179,58 @@
 
             <!-- Return type -->
             :
-            any        </code>
-    </b>
-</p>
-
-<!-- Docs -->
-    <!-- no docs :( -->
-    <p><small>No docs provided</small></p>
-                        </div>
-    <div class="card fluid">
-        <!-- Name with anchor link -->
-        <a id="clearConsole" href="#clearConsole">
-            <h3><code>clearConsole</code></h3></a>
-
-        <!-- Description, based on type -->
-                                    
-<!-- Signature -->
-<p>
-    <b>
-        <code>
-            
-            function clearConsole
-            <!-- Type Parameters -->
-            
-                        <!-- Parameters -->
-            (
-                                    )
-
-            <!-- Return type -->
-            :
             void        </code>
     </b>
 </p>
 
 <!-- Docs -->
     <!-- Description -->
-    <p>Clears the process console.</p>
+    <p>Builds and serves a webpack compiled project.
+It uses the webpack development server to compile and serve the built project sources.
+Both the webpack compiler and development server can be configured
+via configuration files.</p>
 
     <!-- Tags -->
     <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>webpackConfig - the configuration file for the webpack compiler
+used by the development server</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>devServerConfig - the configuration file the webpack development server</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">import { getDevServerConfig, watch } from '@fliegwerk/trc';
+import Server from 'webpack-dev-server';
+
+const paths = getPaths();
+const config = getWebpackConfig(paths);
+const devServerConfig = getDevServerConfig();
+
+watch(config, devServerConfig);
+</code></pre>
+</div>
             </div>
                         </div>
     <div class="card fluid">
@@ -232,8 +274,52 @@
 </p>
 
 <!-- Docs -->
-    <!-- no docs :( -->
-    <p><small>No docs provided</small></p>
+    <!-- Description -->
+    <p>Returns a <em>logsemts</em> <a href="#ComponentLogger"><code>ComponentLogger</code></a> for the given <code>component</code>.</p>
+<p>This provides the capability of logging in a style consistent with the one of <code>trc</code></p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>component - the component for which the logger gets created</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@returns:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>the <a href="#ComponentLogger"><code>ComponentLogger</code></a> for <code>component</code></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const logger = getLogger('my-componenet');
+
+logger.success('A success message');
+logger.warn('A warning message');
+logger.error('An error message');
+logger.info('An information');
+
+// gets printed when DEBUG is set to a pattern matching 'my-component'
+logger.debug('Some debug information');
+</code></pre>
+</div>
+            </div>
                         </div>
     <div class="card fluid">
         <!-- Name with anchor link -->
@@ -261,8 +347,35 @@
 </p>
 
 <!-- Docs -->
-    <!-- no docs :( -->
-    <p><small>No docs provided</small></p>
+    <!-- Description -->
+    <p>Returns a set of paths commonly required for creating a webpack configuration.</p>
+<p>Gets passed to <a href="#getWebpackConfig"><code>getWebpackConfig</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@returns:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>the paths required for creating a webpack config</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const paths = getPaths();
+const webpackConfig = createWebpackConfig(paths, isDev);
+</code></pre>
+</div>
+            </div>
                         </div>
     <div class="card fluid">
         <!-- Name with anchor link -->
@@ -300,13 +413,42 @@
 
             <!-- Return type -->
             :
-            any        </code>
+            Compiler        </code>
     </b>
 </p>
 
 <!-- Docs -->
-    <!-- no docs :( -->
-    <p><small>No docs provided</small></p>
+    <!-- Description -->
+    <p>Creates a <a href="#webpack.Compiler"><code>webpack.Compiler</code></a>, based on the <code>webpackConfig</code></p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>webpackConfig - the webpack configuration</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const config = getWebpackConfig(paths, isDev);
+const compiler = createCompiler(config);
+compiler.run(() =&gt; {
+    compiler.close();
+});
+</code></pre>
+</div>
+            </div>
                         </div>
     <div class="card fluid">
         <!-- Name with anchor link -->
@@ -335,10 +477,29 @@
 
 <!-- Docs -->
     <!-- Description -->
-    <p>Returns the webpack development server configuration.</p>
+    <p>Returns the webpack development server configuration
+which can be used in a webpack development server.</p>
 
     <!-- Tags -->
     <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">import { getDevServerConfig, watch } from '@fliegwerk/trc';
+import Server from 'webpack-dev-server';
+
+const paths = getPaths();
+const config = getWebpackConfig(paths);
+const devServerConfig = getDevServerConfig();
+
+watch(config, devServerConfig);
+</code></pre>
+</div>
             </div>
                         </div>
     <div class="card fluid">
@@ -396,8 +557,50 @@
 </p>
 
 <!-- Docs -->
-    <!-- no docs :( -->
-    <p><small>No docs provided</small></p>
+    <!-- Description -->
+    <p>Builds and returns a webpack configuration for a webpack compiler
+which compiles TypeScript React Code into browser runnable JavaScript.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>paths - the paths needed to build this configuration
+(e.g. project root, output directory, ...)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>isDev - when <code>true</code> webpack will build in development mode
+and when <code>false</code> in production mode</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">import { getWebpackConfig, getPaths, build } from '@fliegwerk/trc';
+
+const paths = getPaths();
+const config = getWebpackConfig(paths);
+build(config).then(() =&gt; console.log('Successfully built'));
+</code></pre>
+</div>
+            </div>
                         </div>
 </div>
 </div>
