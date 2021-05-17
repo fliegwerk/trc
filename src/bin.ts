@@ -59,7 +59,7 @@ try {
 				`--watch`
 			)} or ${ch.blueBright(`-w`)} to do something else)`
 		);
-		build(config);
+		void build(config);
 	}
 } catch (err) {
 	logger.error(err.message);

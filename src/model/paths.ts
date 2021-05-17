@@ -1,3 +1,6 @@
+/**
+ * A set of paths needed for configuring webpack.
+ */
 export interface Paths {
 	/**
 	 * The path to the project root directory.

@@ -1,9 +1,22 @@
-import webpack, { Configuration } from 'webpack';
+import webpack, { Compiler, Configuration } from 'webpack';
 import { getLogger } from './logger';
 
 const logger = getLogger('webpack-compiler');
 
-export function createCompiler(webpackConfig: Configuration) {
+/**
+ * Creates a {@link webpack.Compiler}, based on the `webpackConfig`
+ * @param webpackConfig - the webpack configuration
+ *
+ * @example
+ * ```ts
+ * const config = getWebpackConfig(paths, isDev);
+ * const compiler = createCompiler(config);
+ * compiler.run(() => {
+ *     compiler.close();
+ * });
+ * ```
+ */
+export function createCompiler(webpackConfig: Configuration): Compiler {
 	const compiler = webpack(webpackConfig);
 
 	compiler.hooks.beforeCompile.tap('invalid', () => {

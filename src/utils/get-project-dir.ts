@@ -8,7 +8,12 @@ import { join } from 'path';
  *
  * @throws Error if no project directory gets found
  *
- * @return the project directory
+ * @returns the project directory
+ *
+ * @example
+ * ```ts
+ * const projectDirectory = getProjectDir();
+ * ```
  */
 export function getProjectDir(): string {
 	let currentDir = process.cwd();
