@@ -4,5 +4,6 @@ dist
 docs
 .vscode
 .idea
+package.json
 package-lock.json
 CHANGELOG.md
