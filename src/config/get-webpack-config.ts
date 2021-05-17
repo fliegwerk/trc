@@ -166,6 +166,11 @@ function getLoaders(paths: Paths): RuleSetRule[] {
 			test: /\.[tj]sx?$/,
 			include: paths.srcDir,
 			loader: require.resolve('ts-loader'),
+			options: {
+				compilerOptions: {
+					"noEmit": false
+				}
+			},
 			exclude: /node_modules/
 		},
 		{
