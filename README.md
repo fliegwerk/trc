@@ -1,4 +1,4 @@
-# Welcome to ``@fliegwerk/trc` 👋
+# Welcome to `@fliegwerk/trc` 👋
 
 ![Prerequisite](https://img.shields.io/badge/node-%3E%3D12-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://fliegwerk.github.io/trc)
@@ -78,7 +78,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [fliegwerk](https://github.com/fliegwerk).
+Copyright © 2021 Pablo Klaschka, Ludwig Richter.
 
 This project is [MIT](https://github.com/fliegwerk/trc/blob/main/LICENSE) licensed.
 
