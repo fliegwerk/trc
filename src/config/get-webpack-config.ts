@@ -31,7 +31,10 @@ import { ReactHtmlPlugin } from '../plugins/react-html-plugin';
  * build(config).then(() => console.log('Successfully built'));
  * ```
  */
-export function getWebpackConfig(paths: Paths, isDev: boolean = true): Configuration {
+export function getWebpackConfig(
+	paths: Paths,
+	isDev: boolean = true
+): Configuration {
 	return {
 		mode: isDev ? 'development' : 'production',
 		bail: !isDev,
