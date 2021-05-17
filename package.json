@@ -1,7 +1,42 @@
 {
 	"name": "@fliegwerk/trc",
+	"description": "A simple, bare-bones compiler for Typescript React projects, providing a configurable API",
+	"license": "MIT",
+	"author": {
+		"name": "fliegwerk",
+		"email": "cockpit@fliegwerk.com",
+		"url": "https://www.fliegwerk.com/"
+	},
 	"version": "0.0.0",
-	"private": true,
+	"contributors": [
+		{
+			"email": "klaschka@fliegwerk.com",
+			"name": "Pablo Klaschka",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"email": "richter@fliegwerk.com",
+			"name": "Ludwig Richter",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"bugs": {
+		"url": "https://github.com/fliegwerk/trc/issues",
+		"email": "cockpit@fliegwerk.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fliegwerk/trc.git"
+	},
+	"homepage": "https://fliegwerk.github.io/trc",
+	"keywords": [
+		"typescript",
+		"react",
+		"compile",
+		"webpack",
+		"webpack5",
+		"api"
+	],
 	"scripts": {
 		"build": "tsc --build tsconfig.json",
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern node_modules/ --no-error-on-unmatched-pattern \".\"",
@@ -16,7 +51,7 @@
 		"dist"
 	],
 	"main": "dist/index.js",
-	"types": "types/index.d.ts",
+	"types": "dist/index.d.ts",
 	"bin": {
 		"trc": "dist/bin.js"
 	},
@@ -73,17 +108,5 @@
 		"react-dom": "^17.0.2",
 		"sass": "^1.32.13",
 		"typescript": "^4.2.4"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
 	}
 }
