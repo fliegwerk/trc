@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/fliegwerk/trc/compare/v0.1.1...v0.1.2) (2021-05-17)
+
+
+### Bug Fixes
+
+* **webpack-config:** Force `noEmit` to be `false` in `ts-loader` ([abb9bc3](https://github.com/fliegwerk/trc/commit/abb9bc38b8b1b738f63a313e81400ec8bee049b0))
+
+
+
 ## [0.1.1](https://github.com/fliegwerk/trc/compare/v0.1.0...v0.1.1) (2021-05-17)
 
 
