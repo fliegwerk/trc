@@ -37,7 +37,7 @@ jobs:
           git-user-name: ${{ github.actor }}
           git-user-email: '${{ github.actor }}@users.noreply.github.com'
           release-count: '0'
-          version-file: './project.json'
+          version-file: './package.json'
           skip-on-empty: 'false'
 
       - name: Create Release 🪡
