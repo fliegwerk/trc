@@ -11,9 +11,10 @@ module.exports = {
 			mainFile: 'index.ts'
 		}
 	],
-	title: 'fliegwerk trc programmatic API', // appears in the page title and header
+	title: '@fliegwerk/trc', // appears in the page title and header
 	externalLinks: {
-		GitHub: 'https://github.copm/fliegwerk/webpack-typescript-react-compiler'
+		GitHub: 'https://github.copm/fliegwerk/trc',
+		npm: 'https://www.npmjs.com/package/@fliegwerk/trc'
 	}, // e.g.: { "GitHub": "https://github.com/fliegwerk/fliegdoc" }
 	hidePrivateMembers: true,
 	theme: HTMLTheme
