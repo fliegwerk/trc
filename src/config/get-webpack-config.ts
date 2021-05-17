@@ -168,7 +168,7 @@ function getLoaders(paths: Paths): RuleSetRule[] {
 			loader: require.resolve('ts-loader'),
 			options: {
 				compilerOptions: {
-					"noEmit": false
+					noEmit: false
 				}
 			},
 			exclude: /node_modules/
