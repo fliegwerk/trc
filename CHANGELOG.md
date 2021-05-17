@@ -1,4 +1,13 @@
-# 0.1.0 (2021-05-17)
+## [0.1.1](https://github.com/fliegwerk/trc/compare/v0.1.0...v0.1.1) (2021-05-17)
+
+
+### Bug Fixes
+
+* Package versioning ([e0e9267](https://github.com/fliegwerk/trc/commit/e0e9267a5e491b4319e5f5c47348db437fb477e1))
+
+
+
+# [0.1.0](https://github.com/fliegwerk/trc/compare/73129b4441078944c3cc3b14c845ed71e0cb857c...v0.1.0) (2021-05-17)
 
 
 ### Bug Fixes
