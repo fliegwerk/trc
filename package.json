@@ -62,7 +62,7 @@
     "@fliegwerk/logsemts": "^0.4.2",
     "chalk": "^4.1.1",
     "copy-webpack-plugin": "^9.0.0",
-    "css-loader": "^5.2.4",
+    "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "picomatch": "^2.2.3",
