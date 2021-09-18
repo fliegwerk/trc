@@ -34,7 +34,7 @@ export function watch(
 ): void {
 	const compiler = createCompiler(webpackConfig);
 	const server = new Server(compiler, devServerConfig);
-	server.listen(Number.parseInt(devServerConfig.port), error => {
+	server.listen(Number.parseInt(devServerConfig.port + ""), error => {
 		if (error) {
 			logger.error(
 				`Looks like we're facing a teensy tine little error: ${error.message}`

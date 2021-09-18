@@ -25,7 +25,7 @@ export function getDevServerConfig(): Configuration {
 			writeToDisk: false
 		},
 		client: {
-			logging: 'silent',
+			logging: 'none',
 			overlay: true
 		},
 		// server configuration

@@ -72,7 +72,9 @@ export function getWebpackConfig(
 		devtool: 'inline-source-map',
 		plugins: getPlugins(paths, isDev),
 		devServer: {
-			publicPath: paths.publicDir
+			devMiddleware: {
+				publicPath: paths.publicDir
+			}
 		}
 	};
 }
