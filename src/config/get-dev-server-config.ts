@@ -33,7 +33,9 @@ export function getDevServerConfig(): Configuration {
 		open: process.env.BROWSER !== 'none',
 		hot: true,
 		port: 3000,
-		watchContentBase: true,
+		static: {
+			watch: true
+		},
 		headers: {
 			'Powered-By': 'fliegwerk'
 		}
